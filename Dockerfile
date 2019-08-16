@@ -1,4 +1,4 @@
-FROM python:3-alpine3.9
+FROM python:3-alpine3.10
 
 LABEL Author="Adrian Lucrèce Céleste adrianlucrececeleste@airmail.cc"
 
