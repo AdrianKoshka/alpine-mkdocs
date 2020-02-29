@@ -1,0 +1,24 @@
+---
+- name: Build the alpine-mkdocs container
+  hosts: localhost
+  connection: local
+  vars:
+    ansible_bender:
+      base_image: python:3-alpine3.11
+
+      target_image:
+        name: alpine-mkdocs
+        working_dir: /opt/docs
+        entrypoint: mkdocs
+        cmd: --help
+        labels:
+          built-by: '{{ ansible_user }}'
+
+  tasks:
+  - name: Upgrade pip
+    pip:
+      name: pip
+      extra_args: --upgrade
+  - name: Install mkdocs
+    pip:
+      name: mkdocs
